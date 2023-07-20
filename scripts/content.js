@@ -114,6 +114,7 @@ function processLatestMessage(apiKey, selectedVoice, characterName, previousRow)
   synthesizeText(apiKey, selectedVoice, latestText)
     .then(response => response.blob())
     .then(blob => {
+      // TODO(shaper): Validate we're still on the original character page before adding audio element.
       const audioBlobUrl = URL.createObjectURL(blob)
       const audioElement = new Audio(audioBlobUrl);
       audioElement.classList.add(LMNT_AUDIO_CSS_CLASS);
