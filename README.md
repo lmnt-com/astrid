@@ -27,5 +27,5 @@ permitted.
 
 ## Release History
 
-1.1 / Jul 20, 2023 / Update license and minor cleanup.
-1.0 / Jul 19, 2023 / Initial release.
+- 1.1 / Jul 20, 2023 / Update license and minor cleanup.
+- 1.0 / Jul 19, 2023 / Initial release.
