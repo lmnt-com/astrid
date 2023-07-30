@@ -27,5 +27,9 @@ permitted.
 
 ## Release History
 
+- 1.3 / Jul 30, 2023
+  - Allow selecting default voice in options page.
+  - Fix data-complete check to restore synthesis.
+- 1.2 / Jul 22, 2023 / Improve options page.
 - 1.1 / Jul 20, 2023 / Update license and minor cleanup.
 - 1.0 / Jul 19, 2023 / Initial release.
