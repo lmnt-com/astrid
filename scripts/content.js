@@ -110,6 +110,7 @@ function processLatestMessage(apiKey, selectedVoice, characterName, previousRow)
   // pmrtext = previousRow ? previousRow.innerText : '';
   // console.log(`processLatestMessage [name=${characterName}, cmrtext=${cmrtext}, pmrtext=${pmrtext}].`);
   if (!currentMessageRow || currentMessageRow == previousRow) {
+    // console.log(`Skipping empty or same-as-previous row [row=${currentMessageRow}].`)
     return currentMessageRow;
   }
 
@@ -118,7 +119,7 @@ function processLatestMessage(apiKey, selectedVoice, characterName, previousRow)
     return previousRow;
   }
 
-  if (!isDataComplete(currentMessageRow)) {
+  if (!isDataComplete(currentMessageRow.parentElement)) {
     // console.log(`Skipping not-data-complete row [row=${currentMessageRow}].`);
     return previousRow;
   }
@@ -127,8 +128,7 @@ function processLatestMessage(apiKey, selectedVoice, characterName, previousRow)
   // Message_botMessageBubble__CPGMI 
 
   let latestText = getLatestChatText(currentMessageRow, characterName);
-  console.log(`Processing new message row [latestText=${latestText}, name=${characterName}, voice.id=${selectedVoice.id}].`);
-  // debugger;
+  // console.log(`Processing new message row [latestText=${latestText}, name=${characterName}, voice.id=${selectedVoice.id}].`);
   if (!latestText) {
     return previousRow;
   }
@@ -143,7 +143,7 @@ function processLatestMessage(apiKey, selectedVoice, characterName, previousRow)
       const audioElement = new Audio(audioBlobUrl);
       audioElement.classList.add(LMNT_AUDIO_CSS_CLASS);
       audioElement.controls = true;
-      audioElement.style = 'margin-left: 40px;';
+      audioElement.style = 'margin-top: 10px;';
       audioElement.autoplay = true;
       getLatestChatTextElement().parentElement.appendChild(audioElement);
     });
@@ -156,7 +156,7 @@ function isHumanRow(messageRowEl) {
 };
 
 function isDataComplete(messageRowEl) {
-  const attrValue = messageRowEl.getAttribute('data-complete');
+  const attrValue = messageRowEl && messageRowEl.getAttribute('data-complete');
   return (attrValue === 'true');
 };
 
